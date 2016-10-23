@@ -46,12 +46,12 @@ public class QuizActivity extends Activity {
             public void onClick(View v) {
                 RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
                 RadioButton answer = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
-                Log.d("yourans", question.getAnswer() + " " + answer.getText());
-                if (question.getAnswer().equals(answer.getText())) {
+                Log.d("your answer", question.getCorrectAnswer() + " " + answer.getText());
+                if (question.getCorrectAnswer().equals(answer.getText())) {
                     score++;
-                    Log.d("score", "Your score" + score);
+                    Log.d("score", "your score" + score);
                 }
-                if (questionID < 5) {
+                if (questionID < 1) {
                     question = allQuestions.get(questionID);
                     setQuestionView();
                 } else {
@@ -76,7 +76,7 @@ public class QuizActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem menu) {
         switch (menu.getItemId()) {
             case R.id.menu_database:
-                Intent db_manager = new Intent(QuizActivity.this, AndroidDatabaseManager.class);
+                Intent db_manager = new Intent(QuizActivity.this, DatabaseManager.class);
                 startActivity(db_manager);
                 return true;
             case R.id.menu_settings:
