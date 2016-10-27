@@ -37,8 +37,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + KEY_OPTION_B + " TEXT, " + KEY_OPTION_C + " TEXT)";
         sqlitedatabase.execSQL(sql);
         addQuestions();
-        // TODO: 21.10.2016 Check if this is needed
-        // sqlitedatabase.close();
     }
 
     private void addQuestions() {
