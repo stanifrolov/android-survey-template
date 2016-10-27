@@ -2,6 +2,5 @@
 *out
 *gen
 *.settings
+*.gradle
 
-QuizApp/proguard-project.txt
-*.properties
