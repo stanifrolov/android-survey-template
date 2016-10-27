@@ -3,93 +3,48 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="5041ae701add4306a35bb81b095dadcf8174d270">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_b06ce245309406ac679ec0c891119a50780df847\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_9e4ed87164792211f54d5da34c58d50e64b4f121\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_94dd15edf2b9d25d6ea5fd476c5fcf12603e7596\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_4ce405359493955335b3f863eadef25f013c8931\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_d06dfdfe3e6342a2a4b143c53ff755ef04f0196f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_f67000cbe8081476c7a8a990ea38ce998e39275a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_400f7689f2145a89e4f873769a69866f1a225a65\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_a68258e2f709f4b8d998410fdb01bd0919435a69\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
         sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_0b6c0775e206a3c3aba7272b7b4427d48494be1c\classes.dex" />
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_c37ca74504f5dd43d2c8996415d925b411e77976\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_7a5fac5809af4aa2c36403acc5a2b28a85c5b545\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_5e2c8bd782ec239c9e13a1fb87a0c3559d94b310\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
         sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_ea770ccbdc693adf05850f67fd9f4d55d43c39f5\classes.dex" />
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_61cfd368cbb832f234645a57f03109d8b8c8dedb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_ad587391e5323293983be3adb4279df030678d46\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -98,61 +53,106 @@
         optimize="true"
         revision="24.0.3"
         sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_d616708f9db13a0ead984601af1813d9de673b12\classes.dex" />
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_d616708f9db13a0ead984601af1813d9de673b12\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_efceb5d3d44e0b9a105f99da8a9dbee32027789b\classes.dex" />
+        sha1="4302228b643e0cbc66e063e89c8a288b96022adf">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_aaa73c691f8e9fa81d8b7e81cbd7aaf5acf257f7\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_40c0b5fd95a41c9444ed32c650ab8de4a6855315\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_8c0bf27b8481ded14714f039add6191badd07123\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_fc96dc1632541680d7cbbe60d6a905073fd635b6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
         sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_b3bc37acac7e91f2a3d2a3d4dde1cf763ac990d2\classes.dex" />
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_a1620e1fd43fa2e084852edb711b57442626f8a9\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d8203a2185e63797ccc8bec9f17f21395971007a">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_9970a784e0975220b9ec1b0768f420abf685eda4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
         sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_1ea045120ae0d7da1f1538c8095b1e8de7271fd4\classes.dex" />
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_520ceed9764cb55bd0f681b2d94041f3820fc2d2\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_dde9844ff30bb8362e28a6206568468ec9c9a092\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b81614266438c89b5fd25806b89a5b7d5b9c6000">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_533d3b02a51a2e3eac6740790413119859324b89\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
         sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_b52e703cf45bfd0e1b187b88a07d3aee62a83a7a\classes.dex" />
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_e7512feea9e3179b34ea4d52c652fcdd3740111c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_a3fa033b038ee0ee43c16fd3e8d2b6c40bdc6fe3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_9765407fc5f0e39965c4782e5a59a6f957b32dd5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\StanislavFrolov\Documents\GitHub\QuizApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_7049ec8e655dddf53d665226f77e965e66965c53\classes.dex" />
     </item>
 
 </items>
