@@ -29,9 +29,6 @@
             android:name=".ThankYouActivity"
             android:label="@string/title_activity_result" />
         <activity
-            android:name=".DatabaseManagerActivity"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".LoginActivity"
             android:excludeFromRecents="true"
             android:label="@string/title_activity_login"

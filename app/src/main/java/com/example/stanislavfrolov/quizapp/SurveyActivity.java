@@ -69,10 +69,6 @@ public class SurveyActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem menu) {
         switch (menu.getItemId()) {
-            case R.id.menu_database:
-                Intent db_manager = new Intent(SurveyActivity.this, DatabaseManagerActivity.class);
-                startActivity(db_manager);
-                return true;
             case R.id.menu_settings:
                 return true;
             default:

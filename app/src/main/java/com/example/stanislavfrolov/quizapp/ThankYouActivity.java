@@ -39,10 +39,6 @@ public class ThankYouActivity extends Activity implements View.OnClickListener  
     @Override
     public boolean onOptionsItemSelected(MenuItem menu) {
         switch (menu.getItemId()) {
-            case R.id.menu_database:
-                Intent databaseManager = new Intent(ThankYouActivity.this, DatabaseManagerActivity.class);
-                startActivity(databaseManager);
-                return true;
             case R.id.menu_settings:
                 return true;
             default:

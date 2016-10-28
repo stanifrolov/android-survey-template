@@ -102,37 +102,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allQuestions;
     }
 
-    public ArrayList<Cursor> getData(String Query) {
-        database = this.getReadableDatabase();
-        String[] columns = new String[]{"message"};
-        ArrayList<Cursor> allCursor = new ArrayList<Cursor>(2);
-        MatrixCursor matrixCursor = new MatrixCursor(columns);
-        allCursor.add(null);
-        allCursor.add(null);
-
-        try {
-            String maxQuery = Query;
-            Cursor c = database.rawQuery(maxQuery, null);
-            matrixCursor.addRow(new Object[]{"success"});
-            allCursor.set(1, matrixCursor);
-            if (null != c && c.getCount() > 0) {
-                allCursor.set(0, c);
-                c.moveToFirst();
-                return allCursor;
-            }
-            return allCursor;
-        } catch (SQLiteException sqliteEx) {
-            Log.d("printing exception", sqliteEx.getMessage());
-            matrixCursor.addRow(new Object[]{"" + sqliteEx.getMessage()});
-            allCursor.set(1, matrixCursor);
-            return allCursor;
-        } catch (Exception ex) {
-            Log.d("printing exception", ex.getMessage());
-            matrixCursor.addRow(new Object[]{"" + ex.getMessage()});
-            allCursor.set(1, matrixCursor);
-            return allCursor;
-        }
-
-    }
-
 }
