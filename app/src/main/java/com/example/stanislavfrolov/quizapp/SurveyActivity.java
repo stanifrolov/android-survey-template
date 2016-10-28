@@ -16,8 +16,8 @@ import android.widget.TextView;
 public class SurveyActivity extends Activity implements View.OnClickListener{
     DatabaseHelper databaseHelper;
     List<Question> allQuestions;
-    int questionID = 0;
     Question question;
+    int questionID = 0;
     TextView questionText;
     RadioButton radioButtonA, radioButtonB, radioButtonC;
 

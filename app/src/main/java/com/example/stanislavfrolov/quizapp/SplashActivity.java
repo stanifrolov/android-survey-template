@@ -11,10 +11,17 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO: 28.10.2016 Check if user is logged in
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
+        SessionManager sessionManager = new SessionManager();
+        Intent intent;
+        if (sessionManager.userIsLoggedIn()) {
+            intent = new Intent(this, SurveyActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 }

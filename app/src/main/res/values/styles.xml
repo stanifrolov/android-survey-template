@@ -1,7 +1,7 @@
 <resources>
-    <style name="AppTheme" parent="android:Theme.Holo.Light"/>
+    <style name="AppTheme" parent="android:Theme.Material"/>
 
-    <style name="SplashTheme" parent="android:Theme.Holo.Light">
+    <style name="SplashTheme" parent="android:Theme.Material">
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
 
