@@ -18,46 +18,68 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_QUESTION = "quiz_table";
     private static final String KEY_ID = "ID";
     private static final String KEY_QUESTION = "Question";
-    private static final String KEY_CORRECT_ANSWER = "CorrectAnswer";
     private static final String KEY_OPTION_A = "OptionA";
     private static final String KEY_OPTION_B = "OptionB";
     private static final String KEY_OPTION_C = "OptionC";
+    private static final String KEY_ANSWER = "Answer";
+
     private SQLiteDatabase database;
+    Context context;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqlitedatabase) {
         database = sqlitedatabase;
-        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUESTION + " ( "
-                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_QUESTION
-                + " TEXT, " + KEY_CORRECT_ANSWER + " TEXT, " + KEY_OPTION_A + " TEXT, "
-                + KEY_OPTION_B + " TEXT, " + KEY_OPTION_C + " TEXT)";
-        sqlitedatabase.execSQL(sql);
-        addQuestions();
-    }
-
-    private void addQuestions() {
-        Question question = new Question("How do you feel?", "Good", "Okay", "Bad", "Any answer is correct");
-        this.addQuestion(question);
+        String createTable = "CREATE TABLE IF NOT EXISTS "
+                    + TABLE_QUESTION + " ( "
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + KEY_QUESTION + " TEXT, "
+                    + KEY_OPTION_A + " TEXT, "
+                    + KEY_OPTION_B + " TEXT, "
+                    + KEY_OPTION_C + " TEXT, "
+                    + KEY_ANSWER + " TEXT )";
+        sqlitedatabase.execSQL(createTable);
+        addQuestions(sqlitedatabase);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqlitedatabase, int oldV, int newV) {
+    public void onUpgrade(SQLiteDatabase sqlitedatabase, int oldVersion, int newVersion) {
+        database = sqlitedatabase;
         sqlitedatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_QUESTION);
         onCreate(sqlitedatabase);
     }
 
-    public void addQuestion(Question question) {
+    private void addQuestions(SQLiteDatabase sqlitedatabase) {
+        Question q1 = new Question("How do you feel today?", "Good", "Okay", "Bad", "");
+        this.addQuestion(q1, sqlitedatabase);
+
+        Question q2 = new Question("Did you work out today?", "Yes", "No", "Later", "");
+        this.addQuestion(q2, sqlitedatabase);
+    }
+
+    private void addQuestion(Question question, SQLiteDatabase sqlitedatabase) {
         ContentValues values = new ContentValues();
         values.put(KEY_QUESTION, question.getQuestion());
-        values.put(KEY_CORRECT_ANSWER, question.getCorrectAnswer());
         values.put(KEY_OPTION_A, question.getOptionA());
         values.put(KEY_OPTION_B, question.getOptionB());
         values.put(KEY_OPTION_C, question.getOptionC());
-        database.insert(TABLE_QUESTION, null, values);
+        values.put(KEY_ANSWER, question.getAnswer());
+        sqlitedatabase.insert(TABLE_QUESTION, null, values);
+    }
+
+    public void addAnswerToQuestion(Question question) {
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, question.getId());
+        values.put(KEY_QUESTION, question.getQuestion());
+        values.put(KEY_OPTION_A, question.getOptionA());
+        values.put(KEY_OPTION_B, question.getOptionB());
+        values.put(KEY_OPTION_C, question.getOptionC());
+        values.put(KEY_ANSWER, question.getAnswer());
+        database.replace(TABLE_QUESTION, null, values);
     }
 
     public List<Question> getAllQuestions() {
@@ -70,10 +92,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 Question question = new Question();
                 question.setId(cursor.getInt(0));
                 question.setQuestion(cursor.getString(1));
-                question.setCorrectAnswer(cursor.getString(2));
-                question.setOptionA(cursor.getString(3));
-                question.setOptionB(cursor.getString(4));
-                question.setOptionC(cursor.getString(5));
+                question.setOptionA(cursor.getString(2));
+                question.setOptionB(cursor.getString(3));
+                question.setOptionC(cursor.getString(4));
+                question.setAnswer(cursor.getString(5));
                 allQuestions.add(question);
             } while (cursor.moveToNext());
         }
@@ -112,4 +134,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
+
 }
