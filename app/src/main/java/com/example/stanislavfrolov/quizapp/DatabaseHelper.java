@@ -71,14 +71,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqlitedatabase.insert(TABLE_QUESTION, null, values);
     }
 
-    public void addAnswerToQuestion(Question question) {
+    public void addAnswerToQuestion(Question question, String answer) {
         ContentValues values = new ContentValues();
         values.put(KEY_ID, question.getId());
         values.put(KEY_QUESTION, question.getQuestion());
         values.put(KEY_OPTION_A, question.getOptionA());
         values.put(KEY_OPTION_B, question.getOptionB());
         values.put(KEY_OPTION_C, question.getOptionC());
-        values.put(KEY_ANSWER, question.getAnswer());
+        values.put(KEY_ANSWER, answer);
         database.replace(TABLE_QUESTION, null, values);
     }
 

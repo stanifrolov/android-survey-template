@@ -46,8 +46,7 @@ public class SurveyActivity extends Activity implements View.OnClickListener{
         RadioButton answer = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
         if (questionID < allQuestions.size()) {
             question = allQuestions.get(questionID);
-            question.setAnswer(answer.getText().toString());
-            databaseHelper.addAnswerToQuestion(question);
+            databaseHelper.addAnswerToQuestion(question, answer.getText().toString());
             setQuestionView();
         } else {
             Intent intent = new Intent(SurveyActivity.this, ThankYouActivity.class);
