@@ -13,15 +13,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class SurveyActivity extends Activity {
+public class SurveyActivity extends Activity implements View.OnClickListener{
     DatabaseHelper databaseHelper;
     List<Question> allQuestions;
-    int score = 0;
     int questionID = 0;
     Question question;
-    TextView textQuestion;
+    TextView questionText;
     RadioButton radioButtonA, radioButtonB, radioButtonC;
-    Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,32 +30,30 @@ public class SurveyActivity extends Activity {
         allQuestions = databaseHelper.getAllQuestions();
         question = allQuestions.get(questionID);
 
-        textQuestion = (TextView) findViewById(R.id.textQuestion);
+        questionText = (TextView) findViewById(R.id.textQuestion);
         radioButtonA = (RadioButton) findViewById(R.id.optionA);
         radioButtonB = (RadioButton) findViewById(R.id.optionB);
         radioButtonC = (RadioButton) findViewById(R.id.optionC);
-        nextButton = (Button) findViewById(R.id.button1);
 
+        Button nextButton = (Button) findViewById(R.id.next);
+        nextButton.setOnClickListener(this);
         setQuestionView();
+    }
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
-                RadioButton answer = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
-                if (questionID < allQuestions.size()) {
-                    question = allQuestions.get(questionID);
-                    question.setAnswer(answer.getText().toString());
-                    databaseHelper.addAnswerToQuestion(question);
-                    setQuestionView();
-                } else {
-                    Intent intent = new Intent(SurveyActivity.this, ThankYouActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        });
+    @Override
+    public void onClick(View view) {
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
+        RadioButton answer = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+        if (questionID < allQuestions.size()) {
+            question = allQuestions.get(questionID);
+            question.setAnswer(answer.getText().toString());
+            databaseHelper.addAnswerToQuestion(question);
+            setQuestionView();
+        } else {
+            Intent intent = new Intent(SurveyActivity.this, ThankYouActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override
@@ -77,7 +73,7 @@ public class SurveyActivity extends Activity {
     }
 
     private void setQuestionView() {
-        textQuestion.setText(question.getQuestion());
+        questionText.setText(question.getQuestion());
         radioButtonA.setText(question.getOptionA());
         radioButtonB.setText(question.getOptionB());
         radioButtonC.setText(question.getOptionC());
