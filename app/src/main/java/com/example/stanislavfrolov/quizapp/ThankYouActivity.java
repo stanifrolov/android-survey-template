@@ -45,4 +45,5 @@ public class ThankYouActivity extends Activity implements View.OnClickListener  
                 return super.onOptionsItemSelected(menu);
         }
     }
+
 }
