@@ -11,6 +11,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 public class SingleQuestionActivity extends Activity implements View.OnClickListener {
@@ -20,6 +22,7 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
     List<Question> allQuestions;
     Question question;
     int questionID;
+    String timestamp;
     TextView questionText;
     RadioButton radioButtonA, radioButtonB, radioButtonC;
 
@@ -35,6 +38,7 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
         Bundle bundle = getIntent().getExtras();
         questionID = bundle.getInt("questionID");
         question = allQuestions.get(questionID);
+        timestamp = bundle.getString("timestamp");
 
         questionText = (TextView) findViewById(R.id.textQuestion);
         radioButtonA = (RadioButton) findViewById(R.id.optionA);
@@ -51,7 +55,12 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.optionsGroup);
         RadioButton answer = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
 
-        userDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString());
+        if (timestamp == null || timestamp.isEmpty()) {
+            Calendar calendar = Calendar.getInstance();
+            Timestamp newTimestamp = new Timestamp(calendar.getTime().getTime());
+            timestamp = newTimestamp.toString();
+        }
+        userDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString(), timestamp);
 
         Intent intent = new Intent(SingleQuestionActivity.this, ThankYouActivity.class);
         startActivity(intent);

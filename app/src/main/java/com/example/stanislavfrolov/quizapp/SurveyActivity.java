@@ -1,5 +1,7 @@
 package com.example.stanislavfrolov.quizapp;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import android.os.Bundle;
@@ -49,7 +51,9 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.optionsGroup);
         RadioButton answer = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
 
-        userDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString());
+        Calendar calendar = Calendar.getInstance();
+        Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
+        userDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString(), timestamp.toString());
 
         questionID++;
         if (questionID < allQuestions.size()) {

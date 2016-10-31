@@ -1,50 +1,50 @@
 package com.example.stanislavfrolov.quizapp;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-public class ChangeAnswerActivity extends Activity implements View.OnClickListener {
+import java.util.List;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: 31.10.2016 Implement ChangeAnswerActivity
-        setContentView(R.layout.activity_change_answer);
+public class ChangeAnswerActivity extends ListActivity {
 
-        TextView textView = (TextView) findViewById(R.id.textChangeAnswer);
-        textView.setText("TBD: Choose an answer to change");
+    UserDatabaseHelper userDatabaseHelper;
 
-        Button done = (Button) findViewById(R.id.change_answer_done);
-        done.setOnClickListener(this);
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_manual_input, R.id.label, getAllAnsweredQuestionsAsStringArray());
+        setListAdapter(adapter);
     }
 
     @Override
-    public void onClick(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    protected void onListItemClick(ListView listView, View view, int position, long id) {
+        String item = (String) getListAdapter().getItem(position);
+        String[] parts = item.split(" ");
+        String questionID = parts[2];
+        String timestamp = parts[0] + " " + parts[1];
+        Intent intent = new Intent(this, SingleQuestionActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("questionID", Integer.parseInt(questionID) - 1);
+        bundle.putString("timestamp", timestamp);
+        intent.putExtras(bundle);
         startActivity(intent);
         finish();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_quiz, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menu) {
-        switch (menu.getItemId()) {
-            case R.id.menu_settings:
-                return true;
-            default:
-                return super.onOptionsItemSelected(menu);
+    public String[] getAllAnsweredQuestionsAsStringArray() {
+        userDatabaseHelper = new UserDatabaseHelper(this);
+        List<Answer> allAnswers;
+        allAnswers = userDatabaseHelper.getAllAnsweredQuestions();
+        String[] allQuestionsAsStrings = new String[allAnswers.size()];
+        Answer answer;
+        for (int i = 0; i < allAnswers.size(); i++) {
+            answer = allAnswers.get(i);
+            allQuestionsAsStrings[i] = answer.getTimestamp() + " " + answer.getQuestion() + " " + answer.getAnswer();
         }
+        return allQuestionsAsStrings;
     }
-
 }

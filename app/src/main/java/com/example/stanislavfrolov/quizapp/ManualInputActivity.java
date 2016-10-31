@@ -9,7 +9,6 @@ import android.widget.ListView;
 
 import java.util.List;
 
-
 public class ManualInputActivity extends ListActivity {
 
     QuestionDatabaseHelper questionDatabaseHelper;
@@ -25,7 +24,7 @@ public class ManualInputActivity extends ListActivity {
     protected void onListItemClick(ListView listView, View view, int position, long id) {
         String item = (String) getListAdapter().getItem(position);
         String[] parts = item.split(" ");
-        String questionID = parts[0].toString();
+        String questionID = parts[0];
         Intent intent = new Intent(this, SingleQuestionActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("questionID", Integer.parseInt(questionID) - 1);
@@ -42,7 +41,7 @@ public class ManualInputActivity extends ListActivity {
         Question question;
         for (int i = 0; i < allQuestions.size(); i++) {
             question = allQuestions.get(i);
-            allQuestionsAsStrings[i] = question.getId() + " " + question.getQuestion();
+            allQuestionsAsStrings[i] = question.getQuestion();
         }
         return allQuestionsAsStrings;
     }

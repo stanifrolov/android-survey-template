@@ -2,11 +2,14 @@ package com.example.stanislavfrolov.quizapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.sql.Timestamp;
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 class UserDatabaseHelper extends SQLiteOpenHelper {
 
@@ -31,7 +34,9 @@ class UserDatabaseHelper extends SQLiteOpenHelper {
                 + TABLE_QUESTION + " ( "
                 + KEY_TIMESTAMP + " TEXT, "
                 + KEY_QUESTION + " TEXT, "
-                + KEY_ANSWER + " TEXT )";
+                + KEY_ANSWER + " TEXT, "
+                + "CONSTRAINT unique_key UNIQUE ( "
+                + KEY_TIMESTAMP + " ) )";
         sqlitedatabase.execSQL(createTable);
     }
 
@@ -42,18 +47,38 @@ class UserDatabaseHelper extends SQLiteOpenHelper {
         onCreate(sqlitedatabase);
     }
 
-    void addAnswer(String question, String answer) {
+    void addAnswer(String question, String answer, String timestamp) {
         database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        Calendar calendar = Calendar.getInstance();
-        Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
-
-        values.put(KEY_TIMESTAMP, timestamp.toString());
+        values.put(KEY_TIMESTAMP, timestamp);
         values.put(KEY_QUESTION, question);
         values.put(KEY_ANSWER, answer);
 
-        database.insertOrThrow(TABLE_QUESTION, null, values);
+        String replaceAnswer = "INSERT OR REPLACE INTO "
+                + TABLE_QUESTION + " VALUES (\""
+                + timestamp + "\", \""
+                + question + "\", \""
+                + answer + "\")";
+
+        database.execSQL(replaceAnswer);
     }
 
+    List<Answer> getAllAnsweredQuestions() {
+        List<Answer> allAnswers = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + TABLE_QUESTION;
+        database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Answer answer = new Answer();
+                answer.setTimestamp(cursor.getString(0));
+                answer.setQuestion(cursor.getString(1));
+                answer.setAnswer(cursor.getString(2));
+                allAnswers.add(answer);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return allAnswers;
+    }
 }

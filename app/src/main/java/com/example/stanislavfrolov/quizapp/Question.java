@@ -1,6 +1,7 @@
 package com.example.stanislavfrolov.quizapp;
 
 class Question {
+
     private int id;
     private String question;
     private String optionA;
