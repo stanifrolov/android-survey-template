@@ -15,7 +15,8 @@ import android.widget.TextView;
 
 public class SurveyActivity extends Activity implements View.OnClickListener {
 
-    DatabaseHelper databaseHelper;
+    QuestionDatabaseHelper questionDatabaseHelper;
+    UserDatabaseHelper userDatabaseHelper;
     List<Question> allQuestions;
     Question question;
     int questionID = 0;
@@ -27,8 +28,10 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
 
-        databaseHelper = new DatabaseHelper(this);
-        allQuestions = databaseHelper.getAllQuestions();
+        questionDatabaseHelper = new QuestionDatabaseHelper(this);
+        userDatabaseHelper = new UserDatabaseHelper(this);
+
+        allQuestions = questionDatabaseHelper.getAllQuestions();
         question = allQuestions.get(questionID);
 
         questionText = (TextView) findViewById(R.id.textQuestion);
@@ -43,11 +46,14 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.optionsGroup);
         RadioButton answer = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+
+        userDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString());
+
+        questionID++;
         if (questionID < allQuestions.size()) {
             question = allQuestions.get(questionID);
-            databaseHelper.addAnswerToQuestion(question, answer.getText().toString());
             setQuestionView();
         } else {
             Intent intent = new Intent(SurveyActivity.this, ThankYouActivity.class);
@@ -77,6 +83,5 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         radioButtonA.setText(question.getOptionA());
         radioButtonB.setText(question.getOptionB());
         radioButtonC.setText(question.getOptionC());
-        questionID++;
     }
 }

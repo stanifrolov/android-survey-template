@@ -23,7 +23,7 @@
             android:text="Question Text"
             android:textAppearance="?android:attr/textAppearanceLarge" />
         <RadioGroup
-            android:id="@+id/radioGroup1"
+            android:id="@+id/optionsGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.04">

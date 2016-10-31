@@ -6,7 +6,6 @@ public class Question {
     private String optionA;
     private String optionB;
     private String optionC;
-    private String answer;
 
     public Question() {
         id = 0;
@@ -14,15 +13,13 @@ public class Question {
         optionA = "";
         optionB = "";
         optionC = "";
-        answer = "";
     }
 
-    public Question(String question, String optionA, String optionB, String optionC, String answer) {
+    public Question(String question, String optionA, String optionB, String optionC) {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
         this.optionC = optionC;
-        this.answer = answer;
     }
 
     public int getId() {
@@ -45,10 +42,6 @@ public class Question {
         return optionC;
     }
 
-    public String getAnswer() {
-        return answer;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -67,10 +60,6 @@ public class Question {
 
     public void setOptionC(String optionC) {
         this.optionC = optionC;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
     }
 
 }
