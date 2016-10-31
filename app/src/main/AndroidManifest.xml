@@ -18,7 +18,6 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,6 +31,9 @@
             android:name=".ManualInputActivity"
             android:label="@string/title_activity_manual_input" />
         <activity
+            android:name=".SingleQuestionActivity"
+            android:label="@string/title_activity_single_question_activity" />
+        <activity
             android:name=".ChangeAnswerActivity"
             android:label="@string/title_activity_change_answer" />
         <activity
@@ -42,7 +44,8 @@
             android:excludeFromRecents="true"
             android:label="@string/title_activity_login"
             android:noHistory="true" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:label="@string/title_activity_main"/>
     </application>
 
 </manifest>

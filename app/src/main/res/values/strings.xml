@@ -30,4 +30,6 @@
     <string name="done_manual_input">Done</string>
     <string name="change_answer_text">Change Answer Text</string>
     <string name="done_change_answer">Done</string>
+    <string name="title_activity_main">Main</string>
+    <string name="title_activity_single_question_activity">Single question</string>
 </resources>

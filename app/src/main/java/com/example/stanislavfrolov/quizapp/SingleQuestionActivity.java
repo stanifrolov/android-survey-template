@@ -1,25 +1,25 @@
 package com.example.stanislavfrolov.quizapp;
 
-import java.util.List;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class SurveyActivity extends Activity implements View.OnClickListener {
+import java.util.List;
+
+public class SingleQuestionActivity extends Activity implements View.OnClickListener {
 
     UserDatabaseHelper userDatabaseHelper;
     QuestionDatabaseHelper questionDatabaseHelper;
     List<Question> allQuestions;
     Question question;
-    int questionID = 0;
+    int questionID;
     TextView questionText;
     RadioButton radioButtonA, radioButtonB, radioButtonC;
 
@@ -32,6 +32,8 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         questionDatabaseHelper = new QuestionDatabaseHelper(this);
 
         allQuestions = questionDatabaseHelper.getAllQuestions();
+        Bundle bundle = getIntent().getExtras();
+        questionID = bundle.getInt("questionID");
         question = allQuestions.get(questionID);
 
         questionText = (TextView) findViewById(R.id.textQuestion);
@@ -51,15 +53,9 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
 
         userDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString());
 
-        questionID++;
-        if (questionID < allQuestions.size()) {
-            question = allQuestions.get(questionID);
-            setQuestionView();
-        } else {
-            Intent intent = new Intent(this, ThankYouActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        Intent intent = new Intent(SingleQuestionActivity.this, ThankYouActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

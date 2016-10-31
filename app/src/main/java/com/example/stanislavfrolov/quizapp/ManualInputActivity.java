@@ -1,50 +1,49 @@
 package com.example.stanislavfrolov.quizapp;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-public class ManualInputActivity extends Activity implements View.OnClickListener {
+import java.util.List;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: 31.10.2016 Implement ManualInputActivity
-        setContentView(R.layout.activity_manual_input);
 
-        TextView textView = (TextView) findViewById(R.id.textManualInput);
-        textView.setText("TBD: Choose a question to answer");
+public class ManualInputActivity extends ListActivity {
 
-        Button done = (Button) findViewById(R.id.manual_input_done);
-        done.setOnClickListener(this);
+    QuestionDatabaseHelper questionDatabaseHelper;
+
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_manual_input, R.id.label, getAllQuestionsAsStringArray());
+        setListAdapter(adapter);
     }
 
     @Override
-    public void onClick(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    protected void onListItemClick(ListView listView, View view, int position, long id) {
+        String item = (String) getListAdapter().getItem(position);
+        String[] parts = item.split(" ");
+        String questionID = parts[0].toString();
+        Intent intent = new Intent(this, SingleQuestionActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("questionID", Integer.parseInt(questionID) - 1);
+        intent.putExtras(bundle);
         startActivity(intent);
         finish();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_quiz, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menu) {
-        switch (menu.getItemId()) {
-            case R.id.menu_settings:
-                return true;
-            default:
-                return super.onOptionsItemSelected(menu);
+    public String[] getAllQuestionsAsStringArray() {
+        questionDatabaseHelper = new QuestionDatabaseHelper(this);
+        List<Question> allQuestions;
+        allQuestions = questionDatabaseHelper.getAllQuestions();
+        String[] allQuestionsAsStrings = new String[allQuestions.size()];
+        Question question;
+        for (int i = 0; i < allQuestions.size(); i++) {
+            question = allQuestions.get(i);
+            allQuestionsAsStrings[i] = question.getId() + " " + question.getQuestion();
         }
+        return allQuestionsAsStrings;
     }
-
 }
