@@ -14,12 +14,12 @@ public class ThankYouActivity extends Activity implements View.OnClickListener  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thankyou);
+        setContentView(R.layout.activity_thank_you);
 
         TextView textView = (TextView) findViewById(R.id.textThankYou);
         textView.setText("Thank you!");
 
-        Button done = (Button) findViewById(R.id.done);
+        Button done = (Button) findViewById(R.id.thank_you_done);
         done.setOnClickListener(this);
     }
 
@@ -32,7 +32,7 @@ public class ThankYouActivity extends Activity implements View.OnClickListener  
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_result, menu);
+        getMenuInflater().inflate(R.menu.activity_quiz, menu);
         return true;
     }
 

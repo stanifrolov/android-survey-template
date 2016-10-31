@@ -4,8 +4,11 @@
     <string name="menu_settings">Settings</string>
     <string name="menu_database">Database</string>
     <string name="str_next">Next</string>
-    <string name="title_activity_result">Thank you</string>
+    <string name="title_activity_thank_you">Thank you</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_manual_input">Manual input</string>
+    <string name="title_activity_change_answer">Change answer</string>
+    <string name="title_activity_show_statistic">Show statistic</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -16,7 +19,15 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."
     </string>
+
+    <string name="thank_you_text">Thank you Text</string>
+    <string name="done_thank_you">Done</string>
+    <string name="show_statistic_text">Show Statistic Text</string>
+    <string name="done_show_statistic">Done</string>
+    <string name="manual_input_text">Manual Input Text</string>
+    <string name="done_manual_input">Done</string>
+    <string name="change_answer_text">Change Answer Text</string>
+    <string name="done_change_answer">Done</string>
 </resources>

@@ -14,7 +14,7 @@ public class SplashActivity extends Activity {
         SessionManager sessionManager = new SessionManager();
         Intent intent;
         if (sessionManager.userIsLoggedIn()) {
-            intent = new Intent(this, SurveyActivity.class);
+            intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         } else {

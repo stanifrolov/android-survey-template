@@ -39,22 +39,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.manual_input:
-                // TODO: 28.10.2016 Add ManualInputActivity
-//                intent = new Intent(this, ManualInputActivity.class);
-//                startActivity(intent);
-//                finish();
+                intent = new Intent(this, ManualInputActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.change_answer:
-                // TODO: 28.10.2016 Add ChangeAnswerActivity
-//                intent = new Intent(this, ChangeAnswerActivity.class);
-//                startActivity(intent);
-//                finish();
+                intent = new Intent(this, ChangeAnswerActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.show_statistic:
-                // TODO: 28.10.2016 Add ShowStatisticActivity
-//                intent = new Intent(this, ShowStatisticActivity.class);
-//                startActivity(intent);
-//                finish();
+                intent = new Intent(this, ShowStatisticActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
     }

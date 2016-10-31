@@ -13,7 +13,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class SurveyActivity extends Activity implements View.OnClickListener{
+public class SurveyActivity extends Activity implements View.OnClickListener {
+
     DatabaseHelper databaseHelper;
     List<Question> allQuestions;
     Question question;
