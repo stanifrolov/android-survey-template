@@ -15,8 +15,12 @@ public class ShowStatisticActivity extends Activity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // TODO: 31.10.2016 Implement ShowStatisticActivity
+        setContentView(R.layout.activity_show_statistic);
 
+        TextView textView = (TextView) findViewById(R.id.textShowStatistic);
+        textView.setText("TBD: Show Statistic");
 
+        Button done = (Button) findViewById(R.id.show_statistic_done);
         done.setOnClickListener(this);
     }
 
@@ -29,6 +33,7 @@ public class ShowStatisticActivity extends Activity implements View.OnClickListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_quiz, menu);
         return true;
     }
 

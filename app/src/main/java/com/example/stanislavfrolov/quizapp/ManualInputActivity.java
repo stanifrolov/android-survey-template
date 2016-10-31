@@ -9,13 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+public class ManualInputActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // TODO: 31.10.2016 Implement ManualInputActivity
+        setContentView(R.layout.activity_manual_input);
 
+        TextView textView = (TextView) findViewById(R.id.textManualInput);
+        textView.setText("TBD: Choose a question to answer");
 
+        Button done = (Button) findViewById(R.id.manual_input_done);
         done.setOnClickListener(this);
     }
 
@@ -28,6 +33,7 @@ import android.widget.TextView;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_quiz, menu);
         return true;
     }
 
