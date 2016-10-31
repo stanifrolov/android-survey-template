@@ -3,16 +3,13 @@ package com.example.stanislavfrolov.quizapp;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.MatrixCursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionDatabaseHelper extends SQLiteOpenHelper {
+class QuestionDatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "QuizAppQuestions";
@@ -25,16 +22,15 @@ public class QuestionDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_OPTION_C = "OptionC";
 
     private SQLiteDatabase database;
-    Context context;
 
-    public QuestionDatabaseHelper(Context context) {
+    QuestionDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqlitedatabase) {
         database = sqlitedatabase;
+
         String createTable = "CREATE TABLE IF NOT EXISTS "
                     + TABLE_QUESTION + " ( "
                     + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -43,7 +39,8 @@ public class QuestionDatabaseHelper extends SQLiteOpenHelper {
                     + KEY_OPTION_B + " TEXT, "
                     + KEY_OPTION_C + " TEXT )";
         sqlitedatabase.execSQL(createTable);
-        addQuestions(sqlitedatabase);
+
+        addQuestionsToDatabase(sqlitedatabase);
     }
 
     @Override
@@ -53,12 +50,15 @@ public class QuestionDatabaseHelper extends SQLiteOpenHelper {
         onCreate(sqlitedatabase);
     }
 
-    private void addQuestions(SQLiteDatabase sqlitedatabase) {
-        Question q1 = new Question("How do you feel today?", "Good", "Okay", "Bad");
-        this.addQuestion(q1, sqlitedatabase);
+    private void addQuestionsToDatabase(SQLiteDatabase sqlitedatabase) {
+        List<Question> allQuestions = new ArrayList<>();
 
-        Question q2 = new Question("Did you sleep well?", "Yes", "No", "Leave me alone");
-        this.addQuestion(q2, sqlitedatabase);
+        allQuestions.add(new Question("How do you feel today?", "Good", "Okay", "Bad"));
+        allQuestions.add(new Question("Did you sleep well?", "Yes", "No", "Leave me alone"));
+
+        for (Question question : allQuestions) {
+            this.addQuestion(question, sqlitedatabase);
+        }
     }
 
     private void addQuestion(Question question, SQLiteDatabase sqlitedatabase) {
@@ -70,8 +70,8 @@ public class QuestionDatabaseHelper extends SQLiteOpenHelper {
         sqlitedatabase.insert(TABLE_QUESTION, null, values);
     }
 
-    public List<Question> getAllQuestions() {
-        List<Question> allQuestions = new ArrayList<Question>();
+    List<Question> getAllQuestions() {
+        List<Question> allQuestions = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE_QUESTION;
         database = this.getReadableDatabase();
         Cursor cursor = database.rawQuery(selectQuery, null);
@@ -86,6 +86,7 @@ public class QuestionDatabaseHelper extends SQLiteOpenHelper {
                 allQuestions.add(question);
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return allQuestions;
     }
 

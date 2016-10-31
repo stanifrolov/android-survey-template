@@ -1,9 +1,9 @@
 package com.example.stanislavfrolov.quizapp;
 
-public class SessionManager {
+class SessionManager {
 
     // TODO: 28.10.2016 Implement SessionManager
-    public boolean userIsLoggedIn() {
+    boolean userIsLoggedIn() {
         return true;
     }
 }

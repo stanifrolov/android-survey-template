@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
-public class UserDatabaseHelper extends SQLiteOpenHelper {
+class UserDatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "QuizAppUser";
@@ -19,11 +19,9 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_ANSWER = "Answer";
 
     private SQLiteDatabase database;
-    Context context;
 
-    public UserDatabaseHelper(Context context) {
+    UserDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context = context;
     }
 
     @Override
@@ -44,7 +42,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         onCreate(sqlitedatabase);
     }
 
-    public void addAnswer(String question, String answer) {
+    void addAnswer(String question, String answer) {
         database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
