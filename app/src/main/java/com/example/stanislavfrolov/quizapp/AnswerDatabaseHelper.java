@@ -29,13 +29,13 @@ class AnswerDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqlitedatabase) {
         database = sqlitedatabase;
 
-        createTableIfNotExists(sqlitedatabase);
+        createTableIfNotExists();
     }
 
-    private void createTableIfNotExists(SQLiteDatabase sqlitedatabase) {
+    private void createTableIfNotExists() {
         String createTable = getCreateTableQuery();
 
-        sqlitedatabase.execSQL(createTable);
+        database.execSQL(createTable);
     }
 
     @NonNull
@@ -53,13 +53,13 @@ class AnswerDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqlitedatabase, int oldVersion, int newVersion) {
         database = sqlitedatabase;
 
-        dropTableIfExists(sqlitedatabase);
+        dropTableIfExists();
     }
 
-    private void dropTableIfExists(SQLiteDatabase sqlitedatabase) {
-        sqlitedatabase.execSQL(getDropTableQuery());
+    private void dropTableIfExists() {
+        database.execSQL(getDropTableQuery());
 
-        onCreate(sqlitedatabase);
+        onCreate(database);
     }
 
     @NonNull

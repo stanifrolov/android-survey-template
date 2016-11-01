@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,63 +32,107 @@ class QuestionDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqlitedatabase) {
         database = sqlitedatabase;
 
-        String createTable = "CREATE TABLE IF NOT EXISTS "
-                    + TABLE_QUESTION + " ( "
-                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + KEY_QUESTION + " TEXT, "
-                    + KEY_OPTION_A + " TEXT, "
-                    + KEY_OPTION_B + " TEXT, "
-                    + KEY_OPTION_C + " TEXT )";
-        sqlitedatabase.execSQL(createTable);
+        createTableIfNotExists();
 
-        addQuestionsToDatabase(sqlitedatabase);
+        addQuestionsToDatabase();
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqlitedatabase, int oldVersion, int newVersion) {
-        database = sqlitedatabase;
-        sqlitedatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_QUESTION);
-        onCreate(sqlitedatabase);
+    private void createTableIfNotExists() {
+        String createTable = getCreateQuery();
+
+        database.execSQL(createTable);
     }
 
-    private void addQuestionsToDatabase(SQLiteDatabase sqlitedatabase) {
+    private void addQuestionsToDatabase() {
         List<Question> allQuestions = new ArrayList<>();
 
         allQuestions.add(new Question("1 How do you feel today?", "Good", "Okay", "Bad"));
         allQuestions.add(new Question("2 Did you sleep well?", "Yes", "No", "Leave me alone"));
 
         for (Question question : allQuestions) {
-            this.addQuestion(question, sqlitedatabase);
+            this.addQuestion(question);
         }
     }
 
-    private void addQuestion(Question question, SQLiteDatabase sqlitedatabase) {
+    @NonNull
+    private String getCreateQuery() {
+        return "CREATE TABLE IF NOT EXISTS "
+                + TABLE_QUESTION + " ( "
+                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + KEY_QUESTION + " TEXT, "
+                + KEY_OPTION_A + " TEXT, "
+                + KEY_OPTION_B + " TEXT, "
+                + KEY_OPTION_C + " TEXT )";
+    }
+
+    private void addQuestion(Question question) {
+        ContentValues values = getContentValues(question);
+
+        database.insert(TABLE_QUESTION, null, values);
+    }
+
+    @NonNull
+    private ContentValues getContentValues(Question question) {
         ContentValues values = new ContentValues();
+
         values.put(KEY_QUESTION, question.getQuestion());
         values.put(KEY_OPTION_A, question.getOptionA());
         values.put(KEY_OPTION_B, question.getOptionB());
         values.put(KEY_OPTION_C, question.getOptionC());
-        sqlitedatabase.insert(TABLE_QUESTION, null, values);
+
+        return values;
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqlitedatabase, int oldVersion, int newVersion) {
+        database = sqlitedatabase;
+
+        dropTableIfExists();
+    }
+
+    private void dropTableIfExists() {
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_QUESTION);
+
+        onCreate(database);
     }
 
     List<Question> getAllQuestions() {
         List<Question> allQuestions = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM " + TABLE_QUESTION;
-        database = this.getReadableDatabase();
-        Cursor cursor = database.rawQuery(selectQuery, null);
+
+        Cursor cursor = getAllFromTable();
+
         if (cursor.moveToFirst()) {
             do {
-                Question question = new Question();
-                question.setId(cursor.getInt(0));
-                question.setQuestion(cursor.getString(1));
-                question.setOptionA(cursor.getString(2));
-                question.setOptionB(cursor.getString(3));
-                question.setOptionC(cursor.getString(4));
+                Question question = getQuestionAtCurrentCursor(cursor);
                 allQuestions.add(question);
             } while (cursor.moveToNext());
         }
+
         cursor.close();
         return allQuestions;
     }
+
+    private Cursor getAllFromTable() {
+        database = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_QUESTION;
+
+        return database.rawQuery(selectQuery, null);
+    }
+
+    @NonNull
+    private Question getQuestionAtCurrentCursor(Cursor cursor) {
+        Question question = new Question();
+
+        question.setId(cursor.getInt(0));
+        question.setQuestion(cursor.getString(1));
+        question.setOptionA(cursor.getString(2));
+        question.setOptionB(cursor.getString(3));
+        question.setOptionC(cursor.getString(4));
+
+        return question;
+    }
+
+
 
 }
