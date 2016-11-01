@@ -26,11 +26,11 @@ public class ChangeAnswerActivity extends ListActivity {
     protected void onListItemClick(ListView listView, View view, int position, long id) {
         String item = (String) getListAdapter().getItem(position);
 
-        String questionID = getQuestionIDFromItem(item);
+        String questionID = getQuestionIdFromItem(item);
         String timestamp = getTimestampFromItem(item);
 
         Bundle bundle = new Bundle();
-        setExtrasToBundle(bundle, questionID, timestamp);
+        putExtrasToBundle(bundle, questionID, timestamp);
 
         Intent intent = new Intent(this, SingleQuestionActivity.class);
         intent.putExtras(bundle);
@@ -46,14 +46,14 @@ public class ChangeAnswerActivity extends ListActivity {
         return parts[0] + " " + parts[1];
     }
 
-    private String getQuestionIDFromItem(String item) {
+    private String getQuestionIdFromItem(String item) {
         String[] parts = item.split(" ");
 
         return parts[2];
     }
 
     @NonNull
-    private Bundle setExtrasToBundle(Bundle bundle, String questionID, String timestamp) {
+    private Bundle putExtrasToBundle(Bundle bundle, String questionID, String timestamp) {
         bundle.putInt("questionID", Integer.parseInt(questionID) - 1);
         bundle.putString("timestamp", timestamp);
 

@@ -3,6 +3,7 @@ package com.example.stanislavfrolov.quizapp;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -16,33 +17,52 @@ public class ManualInputActivity extends ListActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_manual_input, R.id.label, getAllQuestionsAsStringArray());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_manual_input, R.id.label, getAllQuestionsAsStrings());
+
         setListAdapter(adapter);
     }
 
     @Override
     protected void onListItemClick(ListView listView, View view, int position, long id) {
         String item = (String) getListAdapter().getItem(position);
-        String[] parts = item.split(" ");
-        String questionID = parts[0];
-        Intent intent = new Intent(this, SingleQuestionActivity.class);
+
+        String questionID = getQuestionIdFromItem(item);
+
         Bundle bundle = new Bundle();
-        bundle.putInt("questionID", Integer.parseInt(questionID) - 1);
+        putExtrasToBundle(bundle, questionID);
+
+        Intent intent = new Intent(this, SingleQuestionActivity.class);
         intent.putExtras(bundle);
+
         startActivity(intent);
         finish();
     }
 
-    public String[] getAllQuestionsAsStringArray() {
+    private void putExtrasToBundle(Bundle bundle, String questionID) {
+        bundle.putInt("questionID", Integer.parseInt(questionID) - 1);
+    }
+
+    private String getQuestionIdFromItem(String item) {
+        String[] parts = item.split(" ");
+        return parts[0];
+    }
+
+    public String[] getAllQuestionsAsStrings() {
         questionDatabaseHelper = new QuestionDatabaseHelper(this);
-        List<Question> allQuestions;
-        allQuestions = questionDatabaseHelper.getAllQuestions();
+        List<Question> allQuestions = questionDatabaseHelper.getAllQuestions();
+
+        return convertQuestionsToStrings(allQuestions);
+    }
+
+    @NonNull
+    private String[] convertQuestionsToStrings(List<Question> allQuestions) {
         String[] allQuestionsAsStrings = new String[allQuestions.size()];
-        Question question;
+
         for (int i = 0; i < allQuestions.size(); i++) {
-            question = allQuestions.get(i);
+            Question question = allQuestions.get(i);
             allQuestionsAsStrings[i] = question.getQuestion();
         }
+
         return allQuestionsAsStrings;
     }
 }
