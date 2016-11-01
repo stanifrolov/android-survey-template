@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SingleQuestionActivity extends Activity implements View.OnClickListener {
 
-    UserDatabaseHelper userDatabaseHelper;
+    AnswerDatabaseHelper answerDatabaseHelper;
     QuestionDatabaseHelper questionDatabaseHelper;
     List<Question> allQuestions;
     Question question;
@@ -31,7 +31,7 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
 
-        userDatabaseHelper = new UserDatabaseHelper(this);
+        answerDatabaseHelper = new AnswerDatabaseHelper(this);
         questionDatabaseHelper = new QuestionDatabaseHelper(this);
 
         allQuestions = questionDatabaseHelper.getAllQuestions();
@@ -60,7 +60,7 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
             Timestamp newTimestamp = new Timestamp(calendar.getTime().getTime());
             timestamp = newTimestamp.toString();
         }
-        userDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString(), timestamp);
+        answerDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString(), timestamp);
 
         Intent intent = new Intent(SingleQuestionActivity.this, ThankYouActivity.class);
         startActivity(intent);

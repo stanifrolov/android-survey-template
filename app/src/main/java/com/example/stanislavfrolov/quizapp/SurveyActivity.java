@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class SurveyActivity extends Activity implements View.OnClickListener {
 
-    UserDatabaseHelper userDatabaseHelper;
+    AnswerDatabaseHelper answerDatabaseHelper;
     QuestionDatabaseHelper questionDatabaseHelper;
     List<Question> allQuestions;
     Question question;
@@ -30,7 +30,7 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
 
-        userDatabaseHelper = new UserDatabaseHelper(this);
+        answerDatabaseHelper = new AnswerDatabaseHelper(this);
         questionDatabaseHelper = new QuestionDatabaseHelper(this);
 
         allQuestions = questionDatabaseHelper.getAllQuestions();
@@ -53,7 +53,7 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
 
         Calendar calendar = Calendar.getInstance();
         Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
-        userDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString(), timestamp.toString());
+        answerDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString(), timestamp.toString());
 
         questionID++;
         if (questionID < allQuestions.size()) {

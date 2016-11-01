@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ChangeAnswerActivity extends ListActivity {
 
-    UserDatabaseHelper userDatabaseHelper;
+    AnswerDatabaseHelper answerDatabaseHelper;
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -36,9 +36,9 @@ public class ChangeAnswerActivity extends ListActivity {
     }
 
     public String[] getAllAnsweredQuestionsAsStringArray() {
-        userDatabaseHelper = new UserDatabaseHelper(this);
+        answerDatabaseHelper = new AnswerDatabaseHelper(this);
         List<Answer> allAnswers;
-        allAnswers = userDatabaseHelper.getAllAnsweredQuestions();
+        allAnswers = answerDatabaseHelper.getAllAnsweredQuestions();
         String[] allQuestionsAsStrings = new String[allAnswers.size()];
         Answer answer;
         for (int i = 0; i < allAnswers.size(); i++) {
