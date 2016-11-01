@@ -19,10 +19,13 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
 
     AnswerDatabaseHelper answerDatabaseHelper;
     QuestionDatabaseHelper questionDatabaseHelper;
+
     List<Question> allQuestions;
+
+    String timestamp;
     Question question;
     int questionID;
-    String timestamp;
+
     TextView questionText;
     RadioButton radioButtonA, radioButtonB, radioButtonC;
 
@@ -35,10 +38,10 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
         questionDatabaseHelper = new QuestionDatabaseHelper(this);
 
         allQuestions = questionDatabaseHelper.getAllQuestions();
-        Bundle bundle = getIntent().getExtras();
-        questionID = bundle.getInt("questionID");
+
+        getExtrasFromBundle();
+
         question = allQuestions.get(questionID);
-        timestamp = bundle.getString("timestamp");
 
         questionText = (TextView) findViewById(R.id.textQuestion);
         radioButtonA = (RadioButton) findViewById(R.id.optionA);
@@ -47,24 +50,55 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
 
         Button nextButton = (Button) findViewById(R.id.next);
         nextButton.setOnClickListener(this);
+
         setQuestionView();
+    }
+
+    private void getExtrasFromBundle() {
+        Bundle bundle = getIntent().getExtras();
+
+        setQuestionId(bundle);
+        setTimestamp(bundle);
+    }
+
+    private void setQuestionView() {
+        questionText.setText(question.getQuestion());
+        radioButtonA.setText(question.getOptionA());
+        radioButtonB.setText(question.getOptionB());
+        radioButtonC.setText(question.getOptionC());
     }
 
     @Override
     public void onClick(View view) {
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.optionsGroup);
-        RadioButton answer = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+        RadioButton answerButton = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
 
-        if (timestamp == null || timestamp.isEmpty()) {
-            Calendar calendar = Calendar.getInstance();
-            Timestamp newTimestamp = new Timestamp(calendar.getTime().getTime());
-            timestamp = newTimestamp.toString();
-        }
-        answerDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString(), timestamp);
+        answerDatabaseHelper.addAnswer(question.getQuestion(), answerButton.getText().toString(), timestamp);
 
         Intent intent = new Intent(SingleQuestionActivity.this, ThankYouActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void setQuestionId(Bundle bundle) {
+        questionID = bundle.getInt("questionID");
+    }
+
+    private void setTimestamp(Bundle bundle) {
+        timestamp = bundle.getString("timestamp");
+        if (timestampIsNullOrEmpty()) {
+            setNewTimestamp();
+        }
+    }
+
+    private boolean timestampIsNullOrEmpty() {
+        return timestamp == null || timestamp.isEmpty();
+    }
+
+    private void setNewTimestamp() {
+        Calendar calendar = Calendar.getInstance();
+        Timestamp newTimestamp = new Timestamp(calendar.getTime().getTime());
+        timestamp = newTimestamp.toString();
     }
 
     @Override
@@ -83,10 +117,4 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
         }
     }
 
-    private void setQuestionView() {
-        questionText.setText(question.getQuestion());
-        radioButtonA.setText(question.getOptionA());
-        radioButtonB.setText(question.getOptionB());
-        radioButtonC.setText(question.getOptionC());
-    }
 }
