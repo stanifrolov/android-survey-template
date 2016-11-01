@@ -19,9 +19,11 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
 
     AnswerDatabaseHelper answerDatabaseHelper;
     QuestionDatabaseHelper questionDatabaseHelper;
+
     List<Question> allQuestions;
     Question question;
     int questionID = 0;
+
     TextView questionText;
     RadioButton radioButtonA, radioButtonB, radioButtonC;
 
@@ -36,14 +38,30 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         allQuestions = questionDatabaseHelper.getAllQuestions();
         question = allQuestions.get(questionID);
 
+        setupLayout();
+    }
+
+    private void setupLayout() {
+        setupLayoutElements();
+
+        Button nextButton = (Button) findViewById(R.id.next);
+        nextButton.setOnClickListener(this);
+
+        setupView();
+    }
+
+    private void setupLayoutElements() {
         questionText = (TextView) findViewById(R.id.textQuestion);
         radioButtonA = (RadioButton) findViewById(R.id.optionA);
         radioButtonB = (RadioButton) findViewById(R.id.optionB);
         radioButtonC = (RadioButton) findViewById(R.id.optionC);
+    }
 
-        Button nextButton = (Button) findViewById(R.id.next);
-        nextButton.setOnClickListener(this);
-        setQuestionView();
+    private void setupView() {
+        questionText.setText(question.getQuestion());
+        radioButtonA.setText(question.getOptionA());
+        radioButtonB.setText(question.getOptionB());
+        radioButtonC.setText(question.getOptionC());
     }
 
     @Override
@@ -51,19 +69,28 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.optionsGroup);
         RadioButton answer = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
 
-        Calendar calendar = Calendar.getInstance();
-        Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
-        answerDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString(), timestamp.toString());
+        answerDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString(), getNewTimeStamp());
 
         questionID++;
-        if (questionID < allQuestions.size()) {
+        if (surveyNotFinished()) {
             question = allQuestions.get(questionID);
-            setQuestionView();
+            setupView();
         } else {
             Intent intent = new Intent(this, ThankYouActivity.class);
             startActivity(intent);
             finish();
         }
+    }
+
+    private String getNewTimeStamp() {
+        Calendar calendar = Calendar.getInstance();
+        Timestamp newTimestamp = new Timestamp(calendar.getTime().getTime());
+
+        return newTimestamp.toString();
+    }
+
+    private boolean surveyNotFinished() {
+        return questionID < allQuestions.size();
     }
 
     @Override
@@ -82,10 +109,4 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void setQuestionView() {
-        questionText.setText(question.getQuestion());
-        radioButtonA.setText(question.getOptionA());
-        radioButtonB.setText(question.getOptionB());
-        radioButtonC.setText(question.getOptionC());
-    }
 }

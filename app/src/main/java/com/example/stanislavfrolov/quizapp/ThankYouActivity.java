@@ -16,6 +16,10 @@ public class ThankYouActivity extends Activity implements View.OnClickListener  
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thank_you);
 
+        setupLayout();
+    }
+
+    private void setupLayout() {
         TextView textView = (TextView) findViewById(R.id.textThankYou);
         textView.setText("Thank you!");
 

@@ -15,6 +15,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setupLayout();
+    }
+
+    private void setupLayout() {
         Button takeSurvey = (Button) findViewById(R.id.take_survey);
         takeSurvey.setOnClickListener(this);
 

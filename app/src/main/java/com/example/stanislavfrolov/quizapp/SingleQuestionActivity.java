@@ -43,15 +43,19 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
 
         question = allQuestions.get(questionID);
 
-        questionText = (TextView) findViewById(R.id.textQuestion);
-        radioButtonA = (RadioButton) findViewById(R.id.optionA);
-        radioButtonB = (RadioButton) findViewById(R.id.optionB);
-        radioButtonC = (RadioButton) findViewById(R.id.optionC);
+        getLayoutElements();
 
         Button nextButton = (Button) findViewById(R.id.next);
         nextButton.setOnClickListener(this);
 
         setQuestionView();
+    }
+
+    private void getLayoutElements() {
+        questionText = (TextView) findViewById(R.id.textQuestion);
+        radioButtonA = (RadioButton) findViewById(R.id.optionA);
+        radioButtonB = (RadioButton) findViewById(R.id.optionB);
+        radioButtonC = (RadioButton) findViewById(R.id.optionC);
     }
 
     private void getExtrasFromBundle() {
@@ -71,9 +75,9 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
     @Override
     public void onClick(View view) {
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.optionsGroup);
-        RadioButton answerButton = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+        RadioButton answer = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
 
-        answerDatabaseHelper.addAnswer(question.getQuestion(), answerButton.getText().toString(), timestamp);
+        answerDatabaseHelper.addAnswer(question.getQuestion(), answer.getText().toString(), timestamp);
 
         Intent intent = new Intent(SingleQuestionActivity.this, ThankYouActivity.class);
         startActivity(intent);
