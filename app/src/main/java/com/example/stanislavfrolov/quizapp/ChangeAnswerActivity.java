@@ -17,47 +17,17 @@ public class ChangeAnswerActivity extends ListActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_manual_input, R.id.label, getAllAnswersAsStrings());
+        String[] allAnswers = getAllAnswersAsStrings();
 
-        setListAdapter(adapter);
-    }
-
-    @Override
-    protected void onListItemClick(ListView listView, View view, int position, long id) {
-        String item = (String) getListAdapter().getItem(position);
-
-        String questionID = getQuestionIdFromItem(item);
-        String timestamp = getTimestampFromItem(item);
-
-        Bundle bundle = new Bundle();
-        putExtrasToBundle(bundle, questionID, timestamp);
-
-        Intent intent = new Intent(this, SingleQuestionActivity.class);
-        intent.putExtras(bundle);
-
-        startActivity(intent);
-        finish();
-    }
-
-    @NonNull
-    private String getTimestampFromItem(String item) {
-        String[] parts = item.split(" ");
-
-        return parts[0] + " " + parts[1];
-    }
-
-    private String getQuestionIdFromItem(String item) {
-        String[] parts = item.split(" ");
-
-        return parts[2];
-    }
-
-    @NonNull
-    private Bundle putExtrasToBundle(Bundle bundle, String questionID, String timestamp) {
-        bundle.putInt("questionID", Integer.parseInt(questionID) - 1);
-        bundle.putString("timestamp", timestamp);
-
-        return bundle;
+        // TODO: 01.11.2016 Create separate activity and refactor
+        if (allAnswers.length == 0) {
+            Intent intent = new Intent(this, ThankYouActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_manual_input, R.id.label, allAnswers);
+            setListAdapter(adapter);
+        }
     }
 
     public String[] getAllAnswersAsStrings() {
@@ -83,4 +53,43 @@ public class ChangeAnswerActivity extends ListActivity {
     private String getAnswerAsString(Answer answer) {
         return answer.getTimestamp() + " " + answer.getQuestion() + " " + answer.getAnswer();
     }
+
+    @Override
+    protected void onListItemClick(ListView listView, View view, int position, long id) {
+        String item = (String) getListAdapter().getItem(position);
+
+        String questionID = getQuestionIdFromItem(item);
+        String timestamp = getTimestampFromItem(item);
+
+        Bundle bundle = new Bundle();
+        putExtrasToBundle(bundle, questionID, timestamp);
+
+        Intent intent = new Intent(this, SingleQuestionActivity.class);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
+        finish();
+    }
+
+    private String getQuestionIdFromItem(String item) {
+        String[] parts = item.split(" ");
+
+        return parts[2];
+    }
+
+    @NonNull
+    private String getTimestampFromItem(String item) {
+        String[] parts = item.split(" ");
+
+        return parts[0] + " " + parts[1];
+    }
+
+    @NonNull
+    private Bundle putExtrasToBundle(Bundle bundle, String questionID, String timestamp) {
+        bundle.putInt("questionID", Integer.parseInt(questionID) - 1);
+        bundle.putString("timestamp", timestamp);
+
+        return bundle;
+    }
+
 }
