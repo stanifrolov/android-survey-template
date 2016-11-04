@@ -3,8 +3,6 @@ package com.example.stanislavfrolov.quizapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -81,6 +79,7 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
 
         Intent intent = new Intent(SingleQuestionActivity.this, ThankYouActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void setQuestionId(Bundle bundle) {

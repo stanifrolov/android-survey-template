@@ -3,8 +3,6 @@ package com.example.stanislavfrolov.quizapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,6 +29,7 @@ public class ThankYouActivity extends Activity implements View.OnClickListener  
     public void onClick(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }
