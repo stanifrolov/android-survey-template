@@ -10,8 +10,8 @@ import android.support.v4.app.NotificationCompat;
 
 public class NotificationPublisher extends BroadcastReceiver {
 
-    public static String NOTIFICATION_ID = "Survey";
-    public static String NOTIFICATION = "Touch to do survey";
+    public static String NOTIFICATION_ID = "notification-id";
+    public static String NOTIFICATION = "notification";
 
     public void onReceive(Context context, Intent intent) {
 
@@ -28,8 +28,13 @@ public class NotificationPublisher extends BroadcastReceiver {
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true).build();
 
+        // TODO: 04.11.2016  How to use this one
+        //Notification notification = intent.getParcelableExtra(NOTIFICATION);
+        //
+
         int id = intent.getIntExtra(NOTIFICATION_ID, 0);
         notificationManager.notify(id, notification);
+
     }
 
 }

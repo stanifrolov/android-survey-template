@@ -71,7 +71,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Notification.Builder builder = new Notification.Builder(this);
         builder.setContentTitle("Please take the survey!");
         builder.setContentText(content);
-        builder.setSmallIcon(R.drawable.splash);
+        builder.setSmallIcon(R.mipmap.ic_launcher);
         return builder.build();
     }
 
