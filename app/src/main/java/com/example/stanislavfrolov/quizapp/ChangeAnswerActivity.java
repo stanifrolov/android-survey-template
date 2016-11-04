@@ -68,7 +68,6 @@ public class ChangeAnswerActivity extends ListActivity {
         intent.putExtras(bundle);
 
         startActivity(intent);
-        finish();
     }
 
     private String getQuestionIdFromItem(String item) {

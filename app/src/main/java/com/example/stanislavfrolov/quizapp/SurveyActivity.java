@@ -78,7 +78,6 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         } else {
             Intent intent = new Intent(this, ThankYouActivity.class);
             startActivity(intent);
-            finish();
         }
     }
 

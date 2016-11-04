@@ -35,7 +35,6 @@ public class ManualInputActivity extends ListActivity {
         intent.putExtras(bundle);
 
         startActivity(intent);
-        finish();
     }
 
     private void putExtrasToBundle(Bundle bundle, String questionID) {

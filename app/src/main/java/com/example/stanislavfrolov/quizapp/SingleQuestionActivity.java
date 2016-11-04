@@ -81,7 +81,6 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
 
         Intent intent = new Intent(SingleQuestionActivity.this, ThankYouActivity.class);
         startActivity(intent);
-        finish();
     }
 
     private void setQuestionId(Bundle bundle) {
