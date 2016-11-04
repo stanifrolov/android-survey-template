@@ -23,7 +23,7 @@ class Question {
         this.optionC = optionC;
     }
 
-    public int getId() {
+    int getId() {
         return id;
     }
 
@@ -43,7 +43,7 @@ class Question {
         return optionC;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 

@@ -21,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"
+            android:label="@string/title_activity_main" />
         <activity
             android:name=".SurveyActivity"
             android:label="@string/title_activity_survey" />
@@ -36,8 +38,7 @@
         <activity
             android:name=".ChangeAnswerActivity"
             android:label="@string/title_activity_change_answer" />
-        <activity android:name=".MainActivity"
-            android:label="@string/title_activity_main"/>
+
     </application>
 
 </manifest>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">QuizApp</string>
+    <string name="app_name">Survey</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_database">Database</string>
     <string name="str_next">Next</string>
     <string name="title_activity_main">Main</string>
-    <string name="title_activity_survey">Survey</string>
+    <string name="title_activity_survey">Full survey</string>
     <string name="title_activity_thank_you">Thank you</string>
     <string name="title_activity_manual_input">Manual input</string>
     <string name="title_activity_change_answer">Change answer</string>

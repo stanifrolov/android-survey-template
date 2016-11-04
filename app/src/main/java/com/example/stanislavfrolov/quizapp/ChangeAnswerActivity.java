@@ -19,15 +19,8 @@ public class ChangeAnswerActivity extends ListActivity {
 
         String[] allAnswers = getAllAnswersAsStrings();
 
-        // TODO: 01.11.2016 Create separate activity and refactor
-        if (allAnswers.length == 0) {
-            Intent intent = new Intent(this, ThankYouActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_manual_input, R.id.label, allAnswers);
-            setListAdapter(adapter);
-        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_manual_input, R.id.label, allAnswers);
+        setListAdapter(adapter);
     }
 
     public String[] getAllAnswersAsStrings() {

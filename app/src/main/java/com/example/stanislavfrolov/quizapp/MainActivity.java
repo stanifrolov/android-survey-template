@@ -36,14 +36,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.take_survey:
                 intent = new Intent(this, SurveyActivity.class);
                 startActivity(intent);
+                onDestroy();
                 break;
             case R.id.manual_input:
                 intent = new Intent(this, ManualInputActivity.class);
                 startActivity(intent);
+                onDestroy();
                 break;
             case R.id.change_answer:
                 intent = new Intent(this, ChangeAnswerActivity.class);
                 startActivity(intent);
+                onDestroy();
                 break;
         }
     }
