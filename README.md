@@ -2,8 +2,8 @@
 
 #Pull database with adb
 
-Make sure adb is in you path.
-Use the following commands pull and save the database from the connected smartphone.
+Make sure adb is in your path.
+Use the following commands to pull and save the database from the connected smartphone.
 Alternatively, save the commands in a .bat file and run the script.
 
 'del [database-name]'
