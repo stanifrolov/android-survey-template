@@ -39,6 +39,8 @@
             android:name=".ChangeAnswerActivity"
             android:label="@string/title_activity_change_answer" />
 
+        <receiver android:name=".NotificationPublisher" />
+
     </application>
 
 </manifest>

@@ -41,10 +41,6 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
 
     private void setupLayout() {
         setupLayoutElements();
-
-        Button nextButton = (Button) findViewById(R.id.next);
-        nextButton.setOnClickListener(this);
-
         setupView();
     }
 
@@ -53,6 +49,9 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         radioButtonA = (RadioButton) findViewById(R.id.optionA);
         radioButtonB = (RadioButton) findViewById(R.id.optionB);
         radioButtonC = (RadioButton) findViewById(R.id.optionC);
+
+        Button nextButton = (Button) findViewById(R.id.next);
+        nextButton.setOnClickListener(this);
     }
 
     private void setupView() {

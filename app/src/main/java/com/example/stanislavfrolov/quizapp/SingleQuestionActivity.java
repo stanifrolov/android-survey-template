@@ -1,5 +1,9 @@
 package com.example.stanislavfrolov.quizapp;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +13,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.List;
 
 public class SingleQuestionActivity extends Activity implements View.OnClickListener {
 
@@ -41,19 +42,8 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
 
         question = allQuestions.get(questionID);
 
-        getLayoutElements();
+        setupLayout();
 
-        Button nextButton = (Button) findViewById(R.id.next);
-        nextButton.setOnClickListener(this);
-
-        setQuestionView();
-    }
-
-    private void getLayoutElements() {
-        questionText = (TextView) findViewById(R.id.textQuestion);
-        radioButtonA = (RadioButton) findViewById(R.id.optionA);
-        radioButtonB = (RadioButton) findViewById(R.id.optionB);
-        radioButtonC = (RadioButton) findViewById(R.id.optionC);
     }
 
     private void getExtrasFromBundle() {
@@ -63,7 +53,22 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
         setTimestamp(bundle);
     }
 
-    private void setQuestionView() {
+    private void setupLayout() {
+        setupLayoutElements();
+        setupView();
+    }
+
+    private void setupLayoutElements() {
+        questionText = (TextView) findViewById(R.id.textQuestion);
+        radioButtonA = (RadioButton) findViewById(R.id.optionA);
+        radioButtonB = (RadioButton) findViewById(R.id.optionB);
+        radioButtonC = (RadioButton) findViewById(R.id.optionC);
+
+        Button nextButton = (Button) findViewById(R.id.next);
+        nextButton.setOnClickListener(this);
+    }
+
+    private void setupView() {
         questionText.setText(question.getQuestion());
         radioButtonA.setText(question.getOptionA());
         radioButtonB.setText(question.getOptionB());
