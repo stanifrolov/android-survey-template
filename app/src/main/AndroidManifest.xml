@@ -32,18 +32,10 @@
             android:label="@string/title_activity_manual_input" />
         <activity
             android:name=".SingleQuestionActivity"
-            android:label="@string/title_activity_single_question_activity" />
+            android:label="@string/title_activity_single_question" />
         <activity
             android:name=".ChangeAnswerActivity"
             android:label="@string/title_activity_change_answer" />
-        <activity
-            android:name=".ShowStatisticActivity"
-            android:label="@string/title_activity_show_statistic" />
-        <activity
-            android:name=".LoginActivity"
-            android:excludeFromRecents="true"
-            android:label="@string/title_activity_login"
-            android:noHistory="true" />
         <activity android:name=".MainActivity"
             android:label="@string/title_activity_main"/>
     </application>

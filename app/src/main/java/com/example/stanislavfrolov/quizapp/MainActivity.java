@@ -27,9 +27,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         Button changeAnswer = (Button) findViewById(R.id.change_answer);
         changeAnswer.setOnClickListener(this);
-
-        Button showStatistic = (Button) findViewById(R.id.show_statistic);
-        showStatistic.setOnClickListener(this);
     }
 
     @Override
@@ -51,27 +48,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 finish();
                 break;
-            case R.id.show_statistic:
-                intent = new Intent(this, ShowStatisticActivity.class);
-                startActivity(intent);
-                finish();
-                break;
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_quiz, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menu) {
-        switch (menu.getItemId()) {
-            case R.id.menu_settings:
-                return true;
-            default:
-                return super.onOptionsItemSelected(menu);
         }
     }
 }

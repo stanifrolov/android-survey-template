@@ -105,20 +105,4 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
         timestamp = newTimestamp.toString();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_quiz, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menu) {
-        switch (menu.getItemId()) {
-            case R.id.menu_settings:
-                return true;
-            default:
-                return super.onOptionsItemSelected(menu);
-        }
-    }
-
 }

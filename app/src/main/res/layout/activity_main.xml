@@ -35,11 +35,5 @@
             android:layout_height="wrap_content"
             android:id="@+id/change_answer" />
 
-        <Button
-            android:text="Show Statistic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/show_statistic" />
-
     </LinearLayout>
 </RelativeLayout>
