@@ -1,10 +1,11 @@
-#Android app to conduct surveys and save data in SQLite.
+# QuizApp
 
-#Pull database with adb
+This is a template for an Android app to conduct surveys and save data in SQLite database. There are two databases. One for the questions and one for collecting the answers.
+
+## Pull database with adb
 
 Make sure adb is in your path.
 Use the following commands to pull and save the database from the connected smartphone.
-Alternatively, save the commands in a .bat file and run the script.
 
 `del [database-name]`
 
@@ -21,5 +22,7 @@ For the questions database:
 
 For the answers database:
 [database-name] = QuizAppUser
+
+Alternatively, save the commands in a .bat file and run the script.
 
 
