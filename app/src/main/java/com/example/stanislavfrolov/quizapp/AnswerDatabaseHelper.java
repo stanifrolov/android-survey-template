@@ -12,7 +12,7 @@ import java.util.List;
 class AnswerDatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "QuizAppUser";
+    private static final String DATABASE_NAME = "QuizAppAnswers";
     private static final String TABLE_QUESTION = "quiz_user";
 
     private static final String KEY_TIMESTAMP = "Timestamp";
