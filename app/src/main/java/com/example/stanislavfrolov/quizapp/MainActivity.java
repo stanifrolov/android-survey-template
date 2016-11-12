@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Intent intent;
         switch (view.getId()) {
             case R.id.take_survey:
-                scheduleNotification(getNotification("5 second delay"), 3000);
+                scheduleNotification("1 second delay", 1000);
                 intent = new Intent(this, SurveyActivity.class);
                 startActivity(intent);
                 onDestroy();
@@ -56,25 +56,39 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void scheduleNotification(Notification notification, int delay) {
+    private void scheduleNotification(String content, int delay) {
         Intent notificationIntent = new Intent(this, NotificationPublisher.class);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
+
+        Notification notification = buildNotification(content);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        setAlarm(delay, notificationIntent);
+    }
+
+    private void setAlarm(int delay, Intent notificationIntent) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         long futureInMillis = SystemClock.elapsedRealtime() + delay;
-        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
     }
 
-    private Notification getNotification(String content) {
+    private Notification buildNotification(String content) {
         Notification.Builder builder = new Notification.Builder(this);
+
         builder.setContentTitle("Please take the survey!");
         builder.setContentText(content);
         builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setAutoCancel(true);
+
+        Intent intent = new Intent(this, SurveyActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        builder.setContentIntent(contentIntent);
+
         return builder.build();
     }
-
 
     @Override
     public void onBackPressed() {
