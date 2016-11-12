@@ -1,17 +1,22 @@
 package com.example.stanislavfrolov.quizapp;
 
-import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.List;
-
-import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.List;
 
 public class SurveyActivity extends Activity implements View.OnClickListener {
 
@@ -75,6 +80,7 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         } else {
             Intent intent = new Intent(this, ThankYouActivity.class);
             startActivity(intent);
+            scheduleNotification("Last survey was 3 hours ago", 3);
             finish();
         }
     }
@@ -88,6 +94,46 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
 
     private boolean surveyNotFinished() {
         return questionID < allQuestions.size();
+    }
+
+    private void scheduleNotification(String content, int delayInHours) {
+        int delayInMillis = getDelayInMillis(delayInHours);
+
+        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
+
+        Notification notification = buildNotification(content);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+
+        setAlarm(delayInMillis, notificationIntent);
+    }
+
+    private int getDelayInMillis(int delayInHours) {
+        return (delayInHours / 60 / 60000);
+    }
+
+    private Notification buildNotification(String content) {
+        Notification.Builder builder = new Notification.Builder(this);
+
+        builder.setContentTitle("Please take the survey!");
+        builder.setContentText(content);
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setAutoCancel(true);
+
+        Intent intent = new Intent(this, SurveyActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        builder.setContentIntent(contentIntent);
+
+        return builder.build();
+    }
+
+    private void setAlarm(int delay, Intent notificationIntent) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
     }
 
 }
