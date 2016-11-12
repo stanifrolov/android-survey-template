@@ -136,4 +136,8 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
 }
