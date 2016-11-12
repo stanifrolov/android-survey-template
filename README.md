@@ -4,6 +4,14 @@ This is a template for an Android app to conduct surveys and save data in SQLite
 
 There are two databases. One for the questions and one for collecting the answers.
 
+## Add your own questions
+
+To add questions to the app go to the `addQuestionsToDatabase()` function in the `QuestionDatabaseHelper` class.
+
+A Question is added through:
+
+`allQuestions.add(new Question("YOUR QUESTION", "OPTION A", "OPTION B", "OPTON C"));`
+
 ## Pull database with adb
 
 Download and run the scripts `pullQuestionsDatabase.bat` and `pullAnswersDatabase.bat`.
