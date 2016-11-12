@@ -8,7 +8,7 @@ There are two databases. One for the questions and one for collecting the answer
 
 To add questions to the app go to the `addQuestionsToDatabase()` function in the `QuestionDatabaseHelper` class.
 
-A Question is added through:
+A question is added through:
 
 `allQuestions.add(new Question("YOUR QUESTION", "OPTION A", "OPTION B", "OPTON C"));`
 
