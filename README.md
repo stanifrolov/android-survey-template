@@ -14,11 +14,13 @@ A Question is added through:
 
 ## Pull database with adb
 
-Download and run the scripts `pullQuestionsDatabase.bat` and `pullAnswersDatabase.bat`.
+Connect smartphone to your computer.
 
 Make sure adb is in your path.
 
-Alternatively, use the following commands to pull and save the database from the connected smartphone.
+Download and run the scripts `pullQuestionsDatabase.bat` and `pullAnswersDatabase.bat`.
+
+Alternatively, use the following commands to pull and save the database.
 
 `del [database-name]`
 
