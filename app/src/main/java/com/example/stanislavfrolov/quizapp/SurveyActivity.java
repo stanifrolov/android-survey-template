@@ -97,7 +97,7 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
     }
 
     private void scheduleNotification(String content, int delayInHours) {
-        int delayInMillis = getDelayInMillis(delayInHours);
+        int delayInMillis = getDelayInMilliSeconds(delayInHours);
 
         Intent notificationIntent = new Intent(this, NotificationPublisher.class);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
@@ -108,8 +108,8 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         setAlarm(delayInMillis, notificationIntent);
     }
 
-    private int getDelayInMillis(int delayInHours) {
-        return (delayInHours / 60 / 60000);
+    private int getDelayInMilliSeconds(int delayInHours) {
+        return (delayInHours * 60 * 60 * 1000);
     }
 
     private Notification buildNotification(String content) {
