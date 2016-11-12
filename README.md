@@ -27,3 +27,9 @@ For the questions database:
 
 For the answers database:
 [database-name] = QuizAppUser
+
+## View database
+
+To view the contents of the databases one can use the DB Browser for SQLite.
+
+Download here http://sqlitebrowser.org/.
