@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -21,6 +22,13 @@ public class ChangeAnswerActivity extends ListActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_manual_input, R.id.label, allAnswers);
         setListAdapter(adapter);
+
+        getListView().setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public void onSwipeLeft() {
+                Toast.makeText(ChangeAnswerActivity.this, "left", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public String[] getAllAnswersAsStrings() {
@@ -50,7 +58,6 @@ public class ChangeAnswerActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView listView, View view, int position, long id) {
         String item = (String) getListAdapter().getItem(position);
-
         String questionID = getQuestionIdFromItem(item);
         String timestamp = getTimestampFromItem(item);
 
@@ -59,8 +66,6 @@ public class ChangeAnswerActivity extends ListActivity {
 
         Intent intent = new Intent(this, SingleQuestionActivity.class);
         intent.putExtras(bundle);
-
-        startActivity(intent);
     }
 
     private String getQuestionIdFromItem(String item) {
