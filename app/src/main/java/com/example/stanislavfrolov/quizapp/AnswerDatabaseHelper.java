@@ -123,4 +123,9 @@ class AnswerDatabaseHelper extends SQLiteOpenHelper {
                 + question + "\", \""
                 + answer + "\")";
     }
+
+    void removeAnswer(String timestamp) {
+        database = this.getWritableDatabase();
+        database.delete(TABLE_QUESTION, "Timestamp=?", new String[]{timestamp});
+    }
 }

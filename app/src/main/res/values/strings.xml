@@ -20,4 +20,8 @@
     <string name="change_answer_text">Change Answer Text</string>
     <string name="done_change_answer">Done</string>
 
+    <string name="change_answer_dialog">Change Answer Dialog</string>
+    <string name="change_answer_fire">Change</string>
+    <string name="change_answer_delete">Delete</string>
+
 </resources>
