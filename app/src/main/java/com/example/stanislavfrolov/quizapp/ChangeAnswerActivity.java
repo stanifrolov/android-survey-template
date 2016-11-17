@@ -88,6 +88,8 @@ public class ChangeAnswerActivity extends ListActivity implements ChangeAnswerDi
         String question = "";
         for(int i = 2; i < parts.length - 1; i ++) {
             question = question + " " + parts[i];
+            if(question.contains("?"))
+                break;
         }
         return question.trim();
     }

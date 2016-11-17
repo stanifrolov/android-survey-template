@@ -86,7 +86,7 @@ class AnswerDatabaseHelper extends SQLiteOpenHelper {
     private Cursor getAllFromTable() {
         database = this.getReadableDatabase();
 
-        String selectQuery = "SELECT  * FROM " + TABLE_QUESTION;
+        String selectQuery = "SELECT  * FROM " + TABLE_QUESTION + " ORDER BY " + KEY_TIMESTAMP;
 
         return database.rawQuery(selectQuery, null);
     }
