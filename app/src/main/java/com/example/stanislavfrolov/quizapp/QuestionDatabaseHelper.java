@@ -48,6 +48,7 @@ class QuestionDatabaseHelper extends SQLiteOpenHelper {
 
         allQuestions.add(new Question("How do you feel today?", "Good", "Okay", "Bad"));
         allQuestions.add(new Question("Did you sleep well?", "Yes", "No", "Leave me alone"));
+        allQuestions.add(new Question("How much did you drink today?", "A lot", "Not much", "I don't know"));
 
         for (Question question : allQuestions) {
             this.addQuestion(question);
