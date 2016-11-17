@@ -10,7 +10,7 @@ To add questions to the app go to the `addQuestionsToDatabase()` function in the
 
 A question is added through:
 
-`allQuestions.add(new Question("YOUR QUESTION", "OPTION A", "OPTION B", "OPTON C"));`
+`allQuestions.add(new Question("YOUR QUESTION", "OPTION A", "OPTION B", "OPTION C"));`
 
 ## Pull database with adb
 
