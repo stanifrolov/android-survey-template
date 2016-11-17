@@ -22,10 +22,11 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
     List<Question> allQuestions;
 
     String timestamp;
-    Question question;
-    int questionID;
+    String questionText;
 
-    TextView questionText;
+    Question question;
+
+    TextView questionTextView;
     RadioButton radioButtonA, radioButtonB, radioButtonC;
 
     @Override
@@ -40,7 +41,10 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
 
         getExtrasFromBundle();
 
-        question = allQuestions.get(questionID);
+        for(Question q : allQuestions) {
+            if(q.getQuestion().equals(questionText))
+                question = q;
+        }
 
         setupLayout();
 
@@ -49,7 +53,7 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
     private void getExtrasFromBundle() {
         Bundle bundle = getIntent().getExtras();
 
-        setQuestionId(bundle);
+        setQuestion(bundle);
         setTimestamp(bundle);
     }
 
@@ -59,7 +63,7 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
     }
 
     private void setupLayoutElements() {
-        questionText = (TextView) findViewById(R.id.textQuestion);
+        questionTextView = (TextView) findViewById(R.id.textQuestion);
         radioButtonA = (RadioButton) findViewById(R.id.optionA);
         radioButtonB = (RadioButton) findViewById(R.id.optionB);
         radioButtonC = (RadioButton) findViewById(R.id.optionC);
@@ -69,7 +73,7 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
     }
 
     private void setupView() {
-        questionText.setText(question.getQuestion());
+        questionTextView.setText(question.getQuestion());
         radioButtonA.setText(question.getOptionA());
         radioButtonB.setText(question.getOptionB());
         radioButtonC.setText(question.getOptionC());
@@ -87,8 +91,8 @@ public class SingleQuestionActivity extends Activity implements View.OnClickList
         finish();
     }
 
-    private void setQuestionId(Bundle bundle) {
-        questionID = bundle.getInt("questionID");
+    private void setQuestion(Bundle bundle) {
+        questionText = bundle.getString("questionTextView");
     }
 
     private void setTimestamp(Bundle bundle) {

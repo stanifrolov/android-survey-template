@@ -26,10 +26,10 @@ public class ManualInputActivity extends ListActivity {
     protected void onListItemClick(ListView listView, View view, int position, long id) {
         String item = (String) getListAdapter().getItem(position);
 
-        String questionID = getQuestionIdFromItem(item);
+        String question = getQuestionFromItem(item);
 
         Bundle bundle = new Bundle();
-        putExtrasToBundle(bundle, questionID);
+        putExtrasToBundle(bundle, question);
 
         Intent intent = new Intent(this, SingleQuestionActivity.class);
         intent.putExtras(bundle);
@@ -37,13 +37,12 @@ public class ManualInputActivity extends ListActivity {
         startActivity(intent);
     }
 
-    private void putExtrasToBundle(Bundle bundle, String questionID) {
-        bundle.putInt("questionID", Integer.parseInt(questionID) - 1);
+    private void putExtrasToBundle(Bundle bundle, String question) {
+        bundle.putString("questionTextView", question);
     }
 
-    private String getQuestionIdFromItem(String item) {
-        String[] parts = item.split(" ");
-        return parts[0];
+    private String getQuestionFromItem(String item) {
+        return item;
     }
 
     public String[] getAllQuestionsAsStrings() {

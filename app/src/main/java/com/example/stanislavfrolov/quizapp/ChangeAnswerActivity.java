@@ -2,14 +2,12 @@ package com.example.stanislavfrolov.quizapp;
 
 import android.app.DialogFragment;
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -58,40 +56,14 @@ public class ChangeAnswerActivity extends ListActivity implements ChangeAnswerDi
         clickedItemPosition = position;
     }
 
-    private String getQuestionIdFromItem(String item) {
-        String[] parts = item.split(" ");
-
-        return parts[2];
-    }
-
-    @NonNull
-    private String getTimestampFromItem(String item) {
-        String[] parts = item.split(" ");
-
-        return parts[0] + " " + parts[1];
-    }
-
-    @NonNull
-    private Bundle putExtrasToBundle(Bundle bundle, String questionID, String timestamp) {
-        bundle.putInt("questionID", Integer.parseInt(questionID) - 1);
-        bundle.putString("timestamp", timestamp);
-
-        return bundle;
-    }
-
-    public void showNoticeDialog() {
-        DialogFragment dialog = new ChangeAnswerDialog();
-        dialog.show(getFragmentManager(), "ChangeAnswerDialog");
-    }
-
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
         String item = (String) getListAdapter().getItem(clickedItemPosition);
-        String questionID = getQuestionIdFromItem(item);
+        String question = getQuestionFromItem(item);
         String timestamp = getTimestampFromItem(item);
 
         Bundle bundle = new Bundle();
-        putExtrasToBundle(bundle, questionID, timestamp);
+        putExtrasToBundle(bundle, question, timestamp);
 
         Intent intent = new Intent(this, SingleQuestionActivity.class);
         intent.putExtras(bundle);
@@ -110,4 +82,34 @@ public class ChangeAnswerActivity extends ListActivity implements ChangeAnswerDi
         finish();
         startActivity(getIntent());
     }
+    private String getQuestionFromItem(String item) {
+        String[] parts = item.split(" ");
+
+        String question = "";
+        for(int i = 2; i < parts.length - 1; i ++) {
+            question = question + " " + parts[i];
+        }
+        return question.trim();
+    }
+
+    @NonNull
+    private String getTimestampFromItem(String item) {
+        String[] parts = item.split(" ");
+
+        return parts[0] + " " + parts[1];
+    }
+
+    @NonNull
+    private Bundle putExtrasToBundle(Bundle bundle, String question, String timestamp) {
+        bundle.putString("questionTextView", question);
+        bundle.putString("timestamp", timestamp);
+
+        return bundle;
+    }
+
+    public void showNoticeDialog() {
+        DialogFragment dialog = new ChangeAnswerDialog();
+        dialog.show(getFragmentManager(), "ChangeAnswerDialog");
+    }
+
 }
