@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -106,6 +107,13 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
 
         setAlarm(delayInMillis, notificationIntent);
+
+        Context context = getApplicationContext();
+        CharSequence text = "Survey notification in 1 hour";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
     private int getDelayInMilliSeconds(int delayInHours) {
