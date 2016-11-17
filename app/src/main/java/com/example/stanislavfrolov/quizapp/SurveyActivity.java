@@ -80,7 +80,7 @@ public class SurveyActivity extends Activity implements View.OnClickListener {
         } else {
             Intent intent = new Intent(this, ThankYouActivity.class);
             startActivity(intent);
-            scheduleNotification("Last survey was 3 hours ago", 3);
+            scheduleNotification("Last survey was 1 hours ago", 1);
             finish();
         }
     }
